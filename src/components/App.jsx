@@ -11,10 +11,14 @@ function App() {
   }
 
   function addItem() {
-    setItems(prevItems => {
+    setItems((prevItems) => {
       return [...prevItems, inputText];
     });
     setInputText("");
+  }
+
+  function deleteItem () {
+    console.log("item called delete")
   }
 
   return (
@@ -30,10 +34,13 @@ function App() {
       </div>
       <div>
         <ul>
-          {items.map(todoItem => (
+          {items.map((todoItem, index) => (
             <ToDoItems
-    text = {todoItem}
-        />
+            key = {index}
+            id= {index}
+            text={todoItem}
+            onChecked = {deleteItem}
+             />
           ))}
         </ul>
       </div>
